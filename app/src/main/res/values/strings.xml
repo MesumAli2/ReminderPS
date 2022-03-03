@@ -2,4 +2,15 @@
     <string name="app_name">Reminders</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="statistics_active_tasks">Active tasks: %.1f%%</string>
+
+    <string name="statistics_completed_tasks">Completed tasks: %.1f%%</string>
+    <string name="search_title">Search</string>
+
+    <string name="application_improvement_title">Application Improvement required</string>
+    <string name="application_improvement_detail">Bug Report: %1s . \n  Ui improvement: %2s . \n Other Issues:  %3s. \n Thank you</string>
+    <string name="permission_required">Notification access is required to display reminders updates.</string>
+    <string name="ok">OK</string>
+    <string name="permission_granted">Reminders permission is granted. You will be updated with your daily reminders.</string>
+
 </resources>

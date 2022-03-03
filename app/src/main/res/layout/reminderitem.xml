@@ -1,41 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    >
 
     <data>
+
+        <import type="android.widget.CompoundButton" />
+
         <variable
             name="reminders"
-            type="com.example.reminders.domain.ReminderMain" />
+            type="com.mesum.reminders.domain.ReminderMain" />
+
         <variable
             name="viewmodel"
-            type="com.example.reminders.AddTaskViewModel" />
+            type="com.mesum.reminders.AddTaskViewModel" />
     </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
-    android:orientation="horizontal"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="8dp"
-    android:paddingTop="8dp"
-    android:onClick="@{() -> viewmodel.openTask(reminders)}"
->
 
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-    />
 
-    <TextView
-        android:id="@+id/title_text"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-     />
-</LinearLayout>
+        android:layout_height="71dp"
+        android:onClick="@{() -> viewmodel.openTask(reminders)}"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="12sp"
+        app:cardElevation="@dimen/cardview_default_elevation"
+        app:cardBackgroundColor="?attr/reminderItem"
+
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/com"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/time_time"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/dateTime"
+                app:layout_constraintTop_toBottomOf="@+id/title_text" />
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="40dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:buttonTint="?attr/checkBoxColor"
+                android:checked="@{reminders.completed}"
+                android:onClick="@{(view) -> viewmodel.completeTask(reminders.title, ((CompoundButton)view).isChecked())}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:useMaterialThemeColors="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/dateTime"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textSize="12sp"
+                android:hint="No Notification"
+                android:textColorHint="?attr/checkBoxColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_text" />
+
+            <TextView
+                android:id="@+id/title_text"
+                style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                android:layout_width="299dp"
+                android:layout_height="21dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Reminder title"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="?attr/checkBoxColor"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="40dp"
+                android:background="?attr/dividerHorizontal"
+                android:outlineAmbientShadowColor="@color/teal_200"
+                android:outlineSpotShadowColor="@color/purple_700"
+                android:backgroundTint="?attr/checkBoxColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="menuItemColor" format="color"/>
+    <attr name="addFragColor" format="color"/>
+    <attr name="reminderItem" format="color"/>
+    <attr name="addEditTask" format="color"/>
+    <attr name="toolbar" format="color"/>
+    <attr name="welBtn" format="color"/>
+    <attr name="checkBoxColor" format="color"/>
+</resources>

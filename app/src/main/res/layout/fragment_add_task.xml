@@ -1,117 +1,371 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/addFragColor"
+
+
     tools:context=".AddTaskFragment">
 
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/add_title"
-            android:layout_width="351dp"
-            android:layout_height="61dp"
-            android:background="@null"
-            android:hint="Title"
-            android:imeOptions="flagNoExtractUi"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/add_desciption"
-            android:layout_width="338dp"
-            android:layout_height="87dp"
-            android:layout_marginTop="10dp"
-            android:background="@null"
-            android:gravity="top"
-            android:hint="Description"
-            android:imeOptions="flagNoExtractUi"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_title" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"
-            app:endIconDrawable="@drawable/ic_baseline_access_time_24"
-            app:endIconMode="custom"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="16dp">
+            app:cardBackgroundColor="?attr/addEditTask"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txttime"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/adding"
+                android:layout_width="match_parent"
+                android:layout_height="142dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_title">
+
+                <EditText
+                    android:id="@+id/add_title"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="top"
+                    android:hint="Title"
+                    android:imeOptions="flagNoExtractUi"
+                    android:inputType="textCapSentences"
+                    android:singleLine="true"
+                    android:textColor="?attr/checkBoxColor"
+                    android:textColorHint="@color/colorGrey"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/add_desciption"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="81dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="1dp"
+                    android:gravity="top"
+
+                    android:hint="Description"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:textColorHint="@color/colorGrey"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/add_title" />
+
+                <ImageButton
+                    android:id="@+id/cameropener"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="28dp"
+                    android:src="@drawable/ic_baseline_image_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/add_desciption"
+                    app:layout_constraintTop_toBottomOf="@+id/add_title" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:clipToPadding="false"
+            app:cardBackgroundColor="?attr/addEditTask"
+            app:cardCornerRadius="12dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="false"
+            app:contentPaddingLeft="4dp"
+            app:contentPaddingRight="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearImages">
+
+            <TextView
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textColor="@color/colorGrey"
+                android:textSize="12dp" />
+
+            <LinearLayout
+                android:id="@+id/expandableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="true"
-                android:focusable="false"
-                android:hint="Enter Time" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
 
-        <Button
-            android:id="@+id/button"
+                    <TextView
+                        android:id="@+id/txttime"
+                        android:layout_width="351dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="44dp"
+                        android:enabled="true"
+                        android:focusable="false"
+                        android:hint="Enter Time"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtDate"
+                        android:layout_width="351dp"
+                        android:layout_height="43dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="5dp"
+                        android:focusable="false"
+                        android:hint="Enter Date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txttime" />
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="20dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_baseline_access_time_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txttime"
+                        app:layout_constraintTop_toTopOf="@+id/txttime" />
+
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="20dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_baseline_calendar_today_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txtDate"
+                        app:layout_constraintTop_toTopOf="@+id/txtDate" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/expandBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="200dp"
+                android:padding="50dp"
+                android:textOff=""
+                android:textOn=""
+
+                app:showText="true" />
+
+        </androidx.cardview.widget.CardView>
+
+        <HorizontalScrollView
+            android:id="@+id/linearImages"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="396dp"
-            android:text="Schedule"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            android:layout_height="100dp"
+            android:layout_marginTop="12dp"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewAdd">
+
+            <LinearLayout
+                android:id="@+id/linImages"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/lineaImages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="?attr/addFragColor"
+                    android:padding="2dp"
+                    app:cardCornerRadius="12dp"
+                    app:strokeColor="@color/black"
+                    app:strokeWidth="1dp">
+
+
+                    <ImageView
+                        android:id="@+id/addbtn"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/myfile"
+                        android:backgroundTint="?attr/addFragColor"
+                        android:padding="2dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_add_24"
+                        android:visibility="gone" />
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewfrq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:clipToPadding="false"
+            app:cardBackgroundColor="?attr/addEditTask"
+            app:cardCornerRadius="12dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="false"
+            app:contentPaddingLeft="4dp"
+            app:contentPaddingRight="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+            <TextView
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:text="Frequency"
+                android:textColor="@color/colorGrey"
+                android:textSize="12dp" />
+
+            <LinearLayout
+                android:id="@+id/freqexpandableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <Spinner
+                        android:id="@+id/spinner_frequency"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="44dp"
+                        android:focusable="false"
+                        app:icon="@drawable/ic_baseline_repeat_24"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Spinner
+                        android:id="@+id/ringerSpinnerFrequency"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:focusable="false"
+                        app:icon="@drawable/ic_baseline_repeat_24"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/spinner_frequency" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/freqexpandBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="200dp"
+                android:padding="50dp"
+                android:textOff=""
+                android:textOn=""
+
+                app:showText="true" />
+
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
-            android:id="@+id/textViewdate"
-            android:layout_width="103dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="428dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.954"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/add_title" />
+            android:id="@+id/button"
+            style="Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="128dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="40dp"
+            android:text="Schedule"
+            android:textAlignment="center"
+            android:textColor="#1242D1"
+            android:textColorHighlight="#6AEABD"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="379dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="15dp"
-            app:endIconDrawable="@drawable/ic_baseline_calendar_today_24"
-            app:endIconMode="custom"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="128dp"
+            android:layout_height="57dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:text="Cancel"
+            android:textAlignment="center"
+            android:textColor="#8EA4E4"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:hint="Enter Date" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="86dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_add_24"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/linearImages"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewAdd" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
-
-    </ScrollView>
-
-
-</layout>

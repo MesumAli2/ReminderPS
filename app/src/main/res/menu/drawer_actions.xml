@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@id/action_statisticsFragment_to_mainFragment"
+        android:icon="@drawable/ic_baseline_format_list_numbered_24"
+        android:title="Reminders App" />
+    <item
+        android:id="@id/action_mainFragment_to_statisticsFragment"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
+        android:title="Statistics" />
+</menu>

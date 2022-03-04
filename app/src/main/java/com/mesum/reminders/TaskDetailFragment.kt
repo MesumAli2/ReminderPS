@@ -1,5 +1,6 @@
 package com.mesum.reminders
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Application
 import android.graphics.*
@@ -21,6 +22,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mesum.reminders.database.ImagesEntitys
 import com.mesum.reminders.databinding.FragmentTaskDetailBinding
 import com.mesum.reminders.util.NotificationHelper
@@ -90,10 +92,8 @@ class TaskDetailFragment : Fragment() {
             findNavController().navigate(action)
         }
         deleteicon.setOnClickListener {
-            viewModel.getReminder(navigationArg.taskTitle).observe(viewLifecycleOwner){
-                viewModel.deleteItem(it)
-                findNavController().navigate(R.id.mainFragment)
-            }
+            showConfirmationDialog()
+
         }
     }
 
@@ -110,6 +110,20 @@ class TaskDetailFragment : Fragment() {
 
         recyclerView.adapter = adapter
 
+    }
+    private fun showConfirmationDialog() {
+        MaterialAlertDialogBuilder(activity?.applicationContext!!)
+            .setTitle("Are you sure you want to remove this reminder ")
+            .setMessage(getString(R.string.permission_required))
+            .setCancelable(false)
+            .setNegativeButton("Cancel") { _, _ ->  }
+            .setPositiveButton("Delete") { _, _ ->
+                viewModel.getReminder(navigationArg.taskTitle).observe(viewLifecycleOwner){
+                    viewModel.deleteItem(it)
+                    findNavController().navigate(R.id.mainFragment)
+                }
+            }
+            .show()
     }
 
 
